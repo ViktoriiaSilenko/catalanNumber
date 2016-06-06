@@ -1,16 +1,10 @@
 package com.implemica.task1Catalan;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-import org.apache.log4j.BasicConfigurator; 
 import org.apache.log4j.Logger;
 
-
-public class CatalanNumber {
+public class CatalanNumber { 
 	
-	private static Logger log = Logger.getLogger(CatalanNumber.class); 
+	private static Logger log = Logger.getLogger(CatalanNumber.class);
 
 	/**
      * Calculate C(n)- number of correct sequences consist of brackets with length 2n (with n open and n close brackets):
@@ -24,9 +18,10 @@ public class CatalanNumber {
      * 
      * @param n - number of open and close bracket
      */
-	public int findCatalanNumber(int n) {
+	public static int findCatalanNumber(int n) {
 		
 		if (n < 0) {
+			log.error("IllegalArgumentException: n = " + n + " is not appropriate, because n cannot be negative");
 			throw new IllegalArgumentException("n = " + n + " is not appropriate, because n cannot be negative");
 		}
 		
@@ -42,26 +37,5 @@ public class CatalanNumber {
 		return catalan[n]; 
 	}
 	
-	public static void main(String [] args) {
-		
-		 
-		BasicConfigurator.configure(); //BasicConfigurator use ConsoleAppender and PatternLayout for all loggers.
-		
-		CatalanNumber catalan = new CatalanNumber();
-
-		log.info("Enter a non-negative number: ");
-	
-		try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in));) {
-			
-			int n = Integer.parseInt(br.readLine());
-			log.info("Answer: " + catalan.findCatalanNumber(n));
-			
-		} catch (NumberFormatException e) {
-			log.error("Error: your input does not contain an integer number");
-		} catch (IOException e) {
-			log.error("I/O error occurs");
-		}
-
-	}
 
 }
