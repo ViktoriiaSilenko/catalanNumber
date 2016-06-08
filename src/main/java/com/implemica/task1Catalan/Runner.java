@@ -5,28 +5,31 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import org.apache.log4j.Logger;
 
-
+/**
+ * @author Viktoriia Silenko
+ */
 
 public class Runner {
-	
-	private static Logger log = Logger.getLogger(Runner.class);
-	
-	public static void main(String [] args) {
 
-		System.out.println("Enter a non-negative number: ");
+	private static Logger log = Logger.getLogger(Runner.class);
+
+	public static void main(String[] args) {
+
+		System.out.println(MessageConstants.MSG_NUMBER_INPUT);
 
 		try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in));) {
-			
+
 			int n = Integer.parseInt(br.readLine());
-			log.info("For n = " + n + " answer: " + CatalanNumber.findCatalanNumber(n));
-			System.out.println("Answer: " + CatalanNumber.findCatalanNumber(n));
-			
+			log.info(String.format(MessageConstants.MSG_ANSWER_FOR_N, n, CatalanNumber.findCatalanNumber(n)));
+			System.out.println(String.format(MessageConstants.MSG_ANSWER, CatalanNumber.findCatalanNumber(n)));
+
 		} catch (NumberFormatException e) {
-			log.error("NumberFormatException: your input does not contain an integer number");
-			System.out.println("Your input does not contain an integer number");
+			log.error(MessageConstants.MSG_NOT_NUMBER_ERROR_WITH_EXCEPTION_TYPE);
+			System.out.println(MessageConstants.MSG_NOT_NUMBER_ERROR);
+			
 		} catch (IOException e) {
-			log.error("IOException: I/O error occurs");
-			System.out.println("Error with reading your input");
+			log.error(MessageConstants.MSG_IO_ERROR_WITH_EXCEPTION_TYPE);
+			System.out.println(MessageConstants.MSG_IO_ERROR);
 		}
 
 	}
