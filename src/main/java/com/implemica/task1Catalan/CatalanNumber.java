@@ -20,21 +20,19 @@ public class CatalanNumber {
 	 * ...
 	 * @param n - number of open and close bracket
 	 */
-	public static BigInteger findCatalanNumber(int n) {
+	public static BigInteger findCatalanNumber(long n) {
 
-		if (n < 0 || n >= Integer.MAX_VALUE) {
+		if (n < 0 || n > (Long.MAX_VALUE-2)/4 ) {
 			throw new IllegalArgumentException(String.format(MessageConstants.MSG_INVALID_NUMBER_INPUT, n));
 		}
 
-		BigInteger catalan[] = new BigInteger[n+1];
-
-		catalan[0] = BigInteger.ONE; // void sequence
+		BigInteger catalan = BigInteger.ONE; // void sequence
 		
-		for (int m = 0; m < n; m++) { // Calculate catalan[m] , m = 1...n
-			catalan[m+1] = catalan[m].multiply(BigInteger.valueOf(4*m+2)).divide(BigInteger.valueOf(m+2));
+		for (int m = 0; m < n; m++) { 
+			catalan = catalan.multiply(BigInteger.valueOf(4*m+2)).divide(BigInteger.valueOf(m+2));
 		}
 		
-		return catalan[n];
+		return catalan;
 	}
 
 }

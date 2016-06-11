@@ -19,7 +19,7 @@ public class Runner {
 
 		try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in));) {
 
-			int n = Integer.parseInt(br.readLine());
+			long n = Long.parseLong(br.readLine());
 			log.info(String.format(MessageConstants.MSG_ANSWER_FOR_N, n, CatalanNumber.findCatalanNumber(n)));
 			System.out.println(String.format(MessageConstants.MSG_ANSWER, CatalanNumber.findCatalanNumber(n)));
 

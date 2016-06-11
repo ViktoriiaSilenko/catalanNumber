@@ -15,7 +15,7 @@ import org.junit.runners.Parameterized.Parameters;
 public class CatalanNumberTest {
 	
 	private BigInteger catalanNumber;
-	private int n;
+	private long n;
 
     public CatalanNumberTest(BigInteger catalanNumber, int n) {
     	this.catalanNumber = catalanNumber;
@@ -37,5 +37,10 @@ public class CatalanNumberTest {
 	@Test (expected = IllegalArgumentException.class)
 	public void testFindCatalanNumberForNegativeInteger() {
 		CatalanNumber.findCatalanNumber(-1);
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void testFindCatalanNumberForMaxValue() {
+		CatalanNumber.findCatalanNumber((Long.MAX_VALUE+2)/4);
 	}
 }
