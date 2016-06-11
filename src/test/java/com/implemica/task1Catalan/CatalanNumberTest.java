@@ -2,6 +2,7 @@ package com.implemica.task1Catalan;
 
 import static org.junit.Assert.*;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -13,17 +14,18 @@ import org.junit.runners.Parameterized.Parameters;
 @RunWith(value = Parameterized.class)
 public class CatalanNumberTest {
 	
-	private int catalanNumber;
+	private BigInteger catalanNumber;
 	private int n;
 
-    public CatalanNumberTest(int catalanNumber, int n) {
+    public CatalanNumberTest(BigInteger catalanNumber, int n) {
     	this.catalanNumber = catalanNumber;
         this.n = n;
     }
 
     @Parameters
     public static Collection<Object[]> data() {
-        Object[][] data = new Object[][] { { 1, 0 }, { 1, 1 }, { 5, 3 }, { 132, 6 } };
+        Object[][] data = new Object[][] { { BigInteger.valueOf(1), 0 }, { BigInteger.valueOf(1), 1 }, { BigInteger.valueOf(5), 3 }, 
+        	{ BigInteger.valueOf(132), 6 }, { BigInteger.valueOf(24466267020L), 21 } };
         return Arrays.asList(data);
     }
 	
